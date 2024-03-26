@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #66d6f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #F79F79;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            
+        }
+
+* { color: none; text-decoration: none;}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+.wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+    background: linear-gradient(-135deg, #F79F79, #F79F79);
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+  /* clip-path: circle(25px at calc(0% + 45px) 45px); */
+  clip-path: circle(0px at calc(100% - 45px) 45px);
+  transition: all 0.2s ease-in-out;
+}
+#active:checked ~ .wrapper{
+  clip-path: circle(75%);
+}
+.menu-btn{
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  /* left: 20px; */
+  top: 5px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+  transition: all 0.2s ease-in-out;
+}
+#active:checked ~ .menu-btn{
+ color: #fff;
+ 
+}
+#active:checked ~ .menu-btn i:before{
+  content: "\f00d";
+}
+.wrapper ul{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+}
+.wrapper ul li{
+  margin: 15px 0;
+}
+.wrapper ul li a{
+  color: none;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 5px 30px;
+  color: #fff;
+    position: relative;
+  line-height: 50px;
+  transition: 0.2s ease;
+}
+.wrapper ul li a:after{
+  position: absolute;
+  content: "";
+  background: #fff;
+  width: 100%;
+  height: 50px;
+  left: 0;
+  border-radius: 50px;
+  transform: scaleY(0);
+  z-index: -1;
+  transition: transform 0.1s ease;
+}
+.wrapper ul li a:hover:after{
+  transform: scaleY(1);
+}
+.wrapper ul li a:hover{
+  color: #5582ff;  
+ 
+}
+input[type="checkbox"]{
+  display: none;
+}
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  text-align: center;
+  width: 100%;
+  color: #202020;
+}
+
+#city {
+padding-left: 15px;
+padding-right: 15px;
+margin-top: 100px; 
+color:
+}
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .home-button, .about-button, .contact-button {
+            padding: 10px 20px;
+            background-color: goldenrod;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            transition: background-color 0.3s, border-radius 0.3s;
+            margin: 10px 0;
+        }
+
+        .home-button:hover, .about-button:hover, .contact-button:hover {
+            background-color: red;
+            border-radius: 50px 50px;
+        }
+
+        .home-link, .about-link, .contact-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .footer {
+            background-color: #9DD9D2;
+            color: black;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header" id="header">
+        <h1> <a href="index.html" style="color: white;">Home</a> </h1>
+    </div>
+
+    <input type="checkbox" id="active">
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="qrcg.html">QR Generator</a></li>
+            <li><a href="Age.html">Age Calculator</a></li>
+            <li><a href="date.html">Date Calculator</a></li>
+            <li><a href="mailto:developers.service.web@gmail.com?subject=/Developer%20contact/<write%20your%20mail%20subject%20here>&body=/Developer%20contact.%20%20Do%20not%20delete%20these%20texts./">Contact</a></li>
+        </ul>
+    </div>
+
+<h1>
+  <a href="" class="typewrite" id="city" data-period="2000" data-type='[ "Hi,👋 Visitor.", "I Love Design.❤️", "I Love to Develop.😇", "Click below link to visit my websites👇 "]'>
+    <span class="wrap"></span>
+  </a>
+</h1>
+
+    <div class="button-container">
+        <a href="qrcg.html" class="home-link">
+            <button class="home-button">QR Generator</button>
+        </a>
+        <a href="Age.html" class="about-link">
+            <button class="about-button">Age Calculator</button>
+        </a>
+        <a href="date.html" class="contact-link">
+            <button class="contact-button">Date Calculator</button>
+        </a>
+        <a href="mailto:developers.service.web@gmail.com?subject=Developer%20contact/<write%20your%20mail%20subject%20here>&body=Developer%20contact.%20%20Do%20not%20delete%20these%20texts." class="contact-link">
+            <button class="contact-button">Contact Developer</button>
+        </a>
+        
+    </div>
+
+    <div class="footer">
+        <p>© 2024 All rights reserved.<a href="mailto:developers.service.web@gmail.com?subject=Developer%20contact/<write%20your%20mail%20subject%20here>&body=Developer%20contact.%20%20Do%20not%20delete%20these%20texts. " style="text-decoration: none;">Developer Contact</a></p>
+    </div>
+
+    <script>
+        var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+    </script>
+</body>
+</html>
