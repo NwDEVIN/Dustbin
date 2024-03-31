@@ -1,225 +1,30 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Age.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Age Calculator</title>
-    <style>
-        
-        
-            .header {
-            background-color: #F79F79;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            width: 100%;
-            position: fixed;
-            top: 0;
-           
-            
-        }
-body {
-            font-family: Arial, sans-serif;
-            background-color: #66d6f4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;                  
-            
-            
- 
- }
- 
- body {
- 
-  color:#fff;
-  padding-top:300px;
-}
-
-* { color: none; text-decoration: none;}
-
-
-#languageDropdown {
-          color: black ;
-            position: absolute;
-            top: 70px;
-            right: 20px ;
-        }
-        .container {
-            background-color: none;
-            border-radius: 20px;
-            box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
-            padding: 0px;
-            text-align: center;
-            width: 100%;
-            margin: auto;
-            margin-top: 0px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input {
-            padding: 8px;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4caf50;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-       p {
-            font-size: 18px;
-            margin-top: 20px;
-            color: #333; 
-        }
-        .footer {
-            background-color: #9DD9D2;
-            color: black;
-            padding: 10px;
-            text-align: center;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            
-       
-        }
-        
-       
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-.wrapper{
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-    background: linear-gradient(-135deg, #F79F79, #F79F79);
-  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
-  /* clip-path: circle(25px at calc(0% + 45px) 45px); */
-  clip-path: circle(0px at calc(100% - 45px) 45px);
-  transition: all 0.2s ease-in-out;
-}
-#active:checked ~ .wrapper{
-  clip-path: circle(75%);
-}
-.menu-btn{
-  position: absolute;
-  z-index: 2;
-  right: 10px;
-  /* left: 20px; */
-  top: 5px;
-  height: 50px;
-  width: 50px;
-  text-align: center;
-  line-height: 50px;
-  border-radius: 50%;
-  font-size: 30px;
-  color: #fff;
-  cursor: pointer;
-  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
-  transition: all 0.2s ease-in-out;
-}
-#active:checked ~ .menu-btn{
- color: #fff;
- 
-}
-#active:checked ~ .menu-btn i:before{
-  content: "\f00d";
-}
-.wrapper ul{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  list-style: none;
-  text-align: center;
-}
-.wrapper ul li{
-  margin: 15px 0;
-}
-.wrapper ul li a{
-  color: none;
-  text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
-  padding: 5px 30px;
-  color: #fff;
-    position: relative;
-  line-height: 50px;
-  transition: 0.2s ease;
-}
-.wrapper ul li a:after{
-  position: absolute;
-  content: "";
-  background: #fff;
-  width: 100%;
-  height: 50px;
-  left: 0;
-  border-radius: 50px;
-  transform: scaleY(0);
-  z-index: -1;
-  transition: transform 0.1s ease;
-}
-.wrapper ul li a:hover:after{
-  transform: scaleY(1);
-}
-.wrapper ul li a:hover{
-  color: #5582ff;  
- 
-}
-input[type="checkbox"]{
-  display: none;
-}
-.content{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  text-align: center;
-  width: 100%;
-  color: #202020;
-}
-.content .title{
-  font-size: 40px;
-  font-weight: 700;
-}
-.content p{
-  font-size: 35px;
-  font-weight: 600;
-}gold;
-}
-
- </style>
-
-<style type="text/css">* {user-select: auto !important; -webkit-user-select: auto !important;}</style><input type="hidden" id="inject_idm_text_selection"><style></style></head><body>
+</head>
+<body>
     <div class="header">
-<h1><a href="Age.html" style="color:white; text-decoration:none;">Age Calculator</a></h1> </div><header>
-     
+        <h1><a href="Age.html" style="color:white; text-decoration:none;">Age Calculator</a></h1>
+    </div>
+    <header>
         <input type="checkbox" id="active">
-      <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
-      <div class="wrapper">
-         <ul>
-        <li><a href="index.html">Home</a></li>          
-      <li><a href="qrcg.html">QR Generator</a></li>
-    <li><a href="Age.html">Age Calculator</a></li>
-    <li><a href="date.html">Date Calculator</a></li>
-     <li><a href="mailto:developers.service.web@gmail.com?subject=/Developer%20contact/<write%20your%20mail%20subject%20here>&amp;body=/Developer%20contact.%20%20Do%20not%20delete%20these%20texts./">Contact</a></li>
-         </ul>
-      </div>
-      
-    
+        <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+        <div class="wrapper">
+            <ul>
+                <li><a href="index.html">Home</a></li>          
+                <li><a href="qrcg.html">QR Generator</a></li>
+                <li><a href="Age.html">Age Calculator</a></li>
+                <li><a href="date.html">Date Calculator</a></li>
+                <li><a href="mailto:developers.service.web@gmail.com?subject=/Developer%20contact/<write%20your%20mail%20subject%20here>&amp;body=/Developer%20contact.%20%20Do%20not%20delete%20these%20texts./">Contact</a></li>
+            </ul>
+        </div>
+
         <div id="languageDropdown">
             <label for="language">Choose Language:</label>
             <select id="language" onchange="changeLanguage(this.value)">
@@ -229,6 +34,7 @@ input[type="checkbox"]{
             </select>
         </div>
     </header>
+
     <div class="container">
         <label for="birthdate" id="birthdateLabel">Enter Your Birthdate:</label> 
         <input type="date" id="birthdate"> 
@@ -237,95 +43,12 @@ input[type="checkbox"]{
         <p id="nextBirthday"></p>
     </div>
 
-
-
-
-
-
-<div class="footer">
-        <p>© 2024 All rights reserved.<a href="mailto:developers.service.web@gmail.com?subject=Developer%20contact/<write%20your%20mail%20subject%20here>&amp;body=Developer%20contact.%20%20Do%20not%20delete%20these%20texts. " style="text-decoration: none;">Developer Contact</a>       </p>
+    <div class="footer">
+        <p>© 2024 All rights reserved.<a href="mailto:developers.service.web@gmail.com?subject=Developer%20contact/<write%20your%20mail%20subject%20here>&amp;body=Developer%20contact.%20%20Do%20not%20delete%20these%20texts. " style="text-decoration: none;">Developer Contact</a></p>
     </div>
-<script>
+
+    <script src="age.js"></script> 
   
-  function calculateAge() {
-            const birthdate = document.getElementById("birthdate").value;
-            const resultElement = document.getElementById("result");
-            const nextBirthdayElement = document.getElementById("nextBirthday");
-            const birthdateLabel = document.getElementById("birthdateLabel");
-
-            // Get selected language from the dropdown
-            const selectedLanguage = document.getElementById("language").value;
-
-            if (birthdate) {
-                const today = new Date();
-                const birthDate = new Date(birthdate);
-
-                let ageYears = today.getFullYear() - birthDate.getFullYear();
-                let ageMonths = today.getMonth() - birthDate.getMonth();
-                let ageDays = today.getDate() - birthDate.getDate();
-
-                if (ageDays < 0) {
-                    ageMonths--;
-                    ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
-                }
-
-                if (ageMonths < 0) {
-                    ageYears--;
-                    ageMonths += 12;
-                }
-
-                // Use language-specific messages based on user's choice
-                const languageMessages = {
-                    'en': `Your age is ${ageYears} years, ${ageMonths} months, and ${ageDays} days.`,
-                    'bn': `আপনার বয়স হলো ${ageYears} বছর, ${ageMonths} মাস, এবং ${ageDays} দিন।`
-                    // Add more languages as needed
-                };
-
-                resultElement.innerText = languageMessages[selectedLanguage];
-                resultElement.style.color = "black";
-
-                // Calculate days until the next birthday
-                const nextBirthday = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
-
-                if (today > nextBirthday) {
-                    // Birthday already occurred this year, calculate for the next year
-                    nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
-                }
-
-                const daysUntilNextBirthday = Math.ceil((nextBirthday - today) / (1000 * 60 * 60 * 24));
-
-                // Use language-specific messages for next birthday
-                const nextBirthdayMessages = {
-                    'en': `Your next birthday will be in: ${daysUntilNextBirthday} days 🎉.`,
-                    'bn': `আপনার পরবর্তী জন্মদিন হবে: ${daysUntilNextBirthday} দিনে 🎉।`
-                    // Add more languages as needed
-                };
-
-                nextBirthdayElement.innerHTML = nextBirthdayMessages[selectedLanguage];
-
-                // Use language-specific label for birthdate
-                const birthdateLabels = {
-                    'en': 'Enter Your Birthdate:',
-                    'bn': 'আপনার জন্মতারিখ লিখুন:'
-                    // Add more languages as needed
-                };
-
-                birthdateLabel.innerText = birthdateLabels[selectedLanguage];
-            } else {
-                resultElement.innerText = "Please enter your birthdate";
-                resultElement.style.color = "red";
-                nextBirthdayElement.innerText = ""; // Clear the next birthday result if birthdate is not entered
-            }
-        }
-        // Function to change language on user selection
-        function changeLanguage(selectedLanguage) {
-            document.documentElement.lang = selectedLanguage;
-            // Call calculateAge to update labels immediately upon language change
-            calculateAge();
-        }
   
-</script>
-
-
-
-</body></html>
+</body>
+</html>
