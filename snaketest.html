@@ -6,22 +6,25 @@
     <title>Snake Game</title>
     <style>
         body {
-            height: 600px;
-            width: 400px;
             background: #fff;
-            display: fixed;
-            
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            position: fixed;     
+            top: 20px;
+            left: 15px;
+            height: 100vh;
+            margin: 0;
         }
 
         canvas {
             border: 2px solid gold;
+            box-sizing: border-box;
         }
 
         #arrowKeys {
             position: fixed;
-            top: 520px;
+            top: 540px;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -37,36 +40,36 @@
             cursor: pointer;
         }
 
-  #leftArrow, #rightArrow {
-  margin-top: -42px; /* Moves the left and right arrows 5px up */
-}
-  
-  #score {
-    
-    position: fixed;
-    top: 60%;
-    left: 35%;
-    font-size: 30px;
-  }
-  
-  #pauseButton {
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 2px;
-    color: white;
-    padding: 0px 0px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 40px;
-    margin: 0px 0px;
-    cursor: pointer;
-}
-  
+        #leftArrow, #rightArrow {
+            margin-top: -42px;
+        }
+
+        #score {
+            position: fixed;
+            top: 350px;
+            left: 65%;
+            transform: translateX(-50%);
+            font-size: 30px;
+        }
+
+        #pauseButton {
+            background-color: #fff;
+            border: none;
+            border-radius: 2px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 40px;
+            position: fixed;
+            top: 350px;
+            right: 300px;        
+            cursor: pointer;
+        }
+
         #gameOver {
             display: none;
             position: fixed;
-            top: 30%;
+            top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 30px;
@@ -74,25 +77,25 @@
         }
 
         #restartButton {
-            background-color: #FFA500;
+            background-color: #fff;
             border: none;
             border-radius: 2px;
-            padding: 0px 0px;
+            padding: 5px 10px;
             text-align: center;
-            margin: 0px 0px;
+            margin-top: 20px;
             cursor: pointer;
             display: none;
             position: fixed;
-            top: 50%;
+            top: 60%;
             left: 50%;
-            color: white;
             transform: translate(-50%, -50%);
+            color: white;
             font-size: 50px;
         }
     </style>
 </head>
 <body>
-    <canvas id="gameCanvas" width="397" height="400"></canvas>
+    <canvas id="gameCanvas" width="350" height="320"></canvas>
 
     <div id="arrowKeys">
         <div class="row">
@@ -106,182 +109,186 @@
     </div>
 
     <div id="score">Score: 0</div>
-  <button id="pauseButton">⏸️</button>
+    <button id="pauseButton">⏸️</button>
     <div id="gameOver">Game Over</div>
     <button id="restartButton">🔄</button>
 
-  <script> 
-var canvas = document.getElementById('gameCanvas');
-var context = canvas.getContext('2d');
-var grid = 16;
-var count = 0;
-var snake = {
-    x: 160,
-    y: 160,
-    dx: grid,
-    dy: 0,
-    cells: [],
-    maxCells: 4
-};
-var apple = {
-    x: 320,
-    y: 320
-};
-var score = 0;
-var gameRunning = true;
-var gamePaused = false;
-var requestId;
+    <script>
+        var canvas = document.getElementById('gameCanvas');
+        var context = canvas.getContext('2d');
+        var grid = 16;
+        var count = 0;
+        var snake = {
+            x: 160,
+            y: 160,
+            dx: grid,
+            dy: 0,
+            cells: [],
+            maxCells: 4
+        };
+        var apple = {
+            x: 160,
+            y: 160
+        };
+        var score = 0;
+        var gameRunning = true;
+        var gamePaused = false;
+        var requestId;
 
-function updateScore() {
-    document.getElementById('score').textContent = 'Score: ' + score;
-}
+        function updateScore() {
+            document.getElementById('score').textContent = 'Score: ' + score;
+        }
 
-function restartGame() {
-    gameRunning = true;
-    score = 0;
-    updateScore();
-    snake = {
-        x: 160,
-        y: 160,
-        dx: grid,
-        dy: 0,
-        cells: [],
-        maxCells: 4
-    };
-    document.getElementById('gameOver').style.display = 'none';
-    document.getElementById('restartButton').style.display = 'none';
-    loop(); // Restart the game loop
-}
-
-document.getElementById('restartButton').addEventListener('click', function() {
-    restartGame();
-});
-
-document.getElementById('pauseButton').addEventListener('click', function() {
-    gamePaused = !gamePaused;
-    if (gamePaused) {
-        cancelAnimationFrame(requestId); // Pause the game loop
-        document.getElementById('pauseButton').textContent = '▶️';
-    } else {
-        loop(); // Resume the game loop
-        document.getElementById('pauseButton').textContent = '⏸️';
-    }
-});
-
-function loop() {
-    if (!gameRunning) return;
-
-    requestId = requestAnimationFrame(loop);
-
-    if (++count < 15) {
-        return;
-    }
-
-    count = 0;
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    snake.x += snake.dx;
-    snake.y += snake.dy;
-
-    if (snake.x < 0) {
-        snake.x = canvas.width - grid;
-    } else if (snake.x >= canvas.width) {
-        snake.x = 0;
-    }
-
-    if (snake.y < 0) {
-        snake.y = canvas.height - grid;
-    } else if (snake.y >= canvas.height) {
-        snake.y = 0;
-    }
-
-    snake.cells.unshift({ x: snake.x, y: snake.y });
-
-    if (snake.cells.length > snake.maxCells) {
-        snake.cells.pop();
-    }
-
-    context.fillStyle = 'red';
-    context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
-
-    context.fillStyle = 'green';
-    snake.cells.forEach(function(cell, index) {
-        context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
-
-        if (cell.x === apple.x && cell.y === apple.y) {
-            snake.maxCells++;
-            score++;
+        function restartGame() {
+            gameRunning = true;
+            score = 0;
             updateScore();
-            apple.x = Math.floor(Math.random() * 25) * grid;
-            apple.y = Math.floor(Math.random() * 25) * grid;
+            snake = {
+                x: 160,
+                y: 160,
+                dx: grid,
+                dy: 0,
+                cells: [],
+                maxCells: 4
+            };
+            apple = {
+                x: 160,
+                y: 160
+            };
+            document.getElementById('gameOver').style.display = 'none';
+            document.getElementById('restartButton').style.display = 'none';
+            loop(); // Restart the game loop
         }
 
-        for (var i = index + 1; i < snake.cells.length; i++) {
-            if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-                gameRunning = false;
-                document.getElementById('gameOver').style.display = 'block';
-                document.getElementById('restartButton').style.display = 'block';
-                break;
+        document.getElementById('restartButton').addEventListener('click', function() {
+            restartGame();
+        });
+
+        document.getElementById('pauseButton').addEventListener('click', function() {
+            gamePaused = !gamePaused;
+            if (gamePaused) {
+                cancelAnimationFrame(requestId); // Pause the game loop
+                document.getElementById('pauseButton').textContent = '▶️';
+            } else {
+                loop(); // Resume the game loop
+                document.getElementById('pauseButton').textContent = '⏸️';
             }
+        });
+
+        function loop() {
+            if (!gameRunning || gamePaused) return;
+
+            requestId = requestAnimationFrame(loop);
+
+            if (++count < 15) {
+                return;
+            }
+
+            count = 0;
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            snake.x += snake.dx;
+            snake.y += snake.dy;
+
+            if (snake.x < 0) {
+                snake.x = canvas.width - grid;
+            } else if (snake.x >= canvas.width) {
+                snake.x = 0;
+            }
+
+            if (snake.y < 0) {
+                snake.y = canvas.height - grid;
+            } else if (snake.y >= canvas.height) {
+                snake.y = 0;
+            }
+
+            snake.cells.unshift({ x: snake.x, y: snake.y });
+
+            if (snake.cells.length > snake.maxCells) {
+                snake.cells.pop();
+            }
+
+            context.fillStyle = 'red';
+            context.fillRect(apple.x, apple.y, grid - 1, grid - 1);
+
+            context.fillStyle = 'green';
+            snake.cells.forEach(function(cell, index) {
+                context.fillRect(cell.x, cell.y, grid - 1, grid - 1);
+
+                if (cell.x === apple.x && cell.y === apple.y) {
+                    snake.maxCells++;
+                    score += 5; // Increment score by 5 instead of 1
+                    updateScore();
+                    apple.x = Math.floor(Math.random() * (canvas.width / grid)) * grid;
+                    apple.y = Math.floor(Math.random() * (canvas.height / grid)) * grid;
+                }
+
+                for (var i = index + 1; i < snake.cells.length; i++) {
+                    if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+                        gameRunning = false;
+                        document.getElementById('gameOver').style.display = 'block';
+                        document.getElementById('restartButton').style.display = 'block';
+                        break;
+                    }
+                }
+            });
         }
-    });
-}
 
-document.addEventListener('keydown', function(e) {
-    if (!gameRunning) return;
+        document.addEventListener('keydown', function(e) {
+            if (!gameRunning || gamePaused) return;
 
-    if (e.which === 37 && snake.dx === 0) {
-        snake.dx = -grid;
-        snake.dy = 0;
-    } else if (e.which === 38 && snake.dy === 0) {
-        snake.dy = -grid;
-        snake.dx = 0;
-    } else if (e.which === 39 && snake.dx === 0) {
-        snake.dx = grid;
-        snake.dy = 0;
-    } else if (e.which === 40 && snake.dy === 0) {
-        snake.dy = grid;
-        snake.dx = 0;
-    }
-});
+            if (e.which === 37 && snake.dx === 0) {
+                snake.dx = -grid;
+                snake.dy = 0;
+            } else if (e.which === 38 && snake.dy === 0) {
+                snake.dy = -grid;
+                snake.dx = 0;
+            } else if (e.which === 39 && snake.dx === 0) {
+                snake.dx = grid;
+                snake.dy = 0;
+            } else if (e.which === 40 && snake.dy === 0) {
+                snake.dy = grid;
+                snake.dx = 0;
+            }
+        });
 
-document.getElementById('leftArrow').addEventListener('click', function() {
-    if (!gameRunning) return;
+        document.getElementById('leftArrow').addEventListener('click', function() {
+            if (!gameRunning || gamePaused) return;
 
-    if (snake.dx === 0) {
-        snake.dx = -grid;
-        snake.dy = 0;
-    }
-});
+            if (snake.dx === 0) {
+                snake.dx = -grid;
+                snake.dy = 0;
+            }
+        });
 
-document.getElementById('upArrow').addEventListener('click', function() {
-    if (!gameRunning) return;
+        document.getElementById('upArrow').addEventListener('click', function() {
+            if (!gameRunning || gamePaused) return;
 
-    if (snake.dy === 0) {
-        snake.dy = -grid;
-        snake.dx = 0;
-    }
-});
+            if (snake.dy === 0) {
+                snake.dy = -grid;
+                snake.dx = 0;
+            }
+        });
 
-document.getElementById('rightArrow').addEventListener('click', function() {
-    if (!gameRunning) return;
+        document.getElementById('rightArrow').addEventListener('click', function() {
+            if (!gameRunning || gamePaused) return;
 
-    if (snake.dx === 0) {
-        snake.dx = grid;
-        snake.dy = 0;
-    }
-});
+            if (snake.dx === 0) {
+                snake.dx = grid;
+                snake.dy = 0;
+            }
+        });
 
-document.getElementById('downArrow').addEventListener('click', function() {
-    if (!gameRunning) return;
+        document.getElementById('downArrow').addEventListener('click', function() {
+            if (!gameRunning || gamePaused) return;
 
-    if (snake.dy === 0) {
-        snake.dy = grid;
-        snake.dx = 0;
-    }
-});
+            if (snake.dy === 0) {
+                snake.dy = grid;
+                snake.dx = 0;
+            }
+        });
 
-loop();
-</script>
+        loop();
+    </script>
 </body>
 </html>
