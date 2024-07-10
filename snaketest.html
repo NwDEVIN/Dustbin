@@ -49,7 +49,8 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 20px;
-            color: #ffa840;       }
+            color: #ff7300;    
+        }
 
         #pauseButton {
             background-color: #ffffff01;
@@ -90,7 +91,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
-            background-color: ffffff3f;
+            background-color: #ffffff01;
             font-size: 50px;
         }
         
@@ -100,9 +101,13 @@
             top: 650px;
             left: 25%;
             gap: 5px;
-            size: 50px;     
+            size: 50px;
+            color: #0081ff;    
         }
-        
+        .share{
+            position: relative;
+            left: 25%;
+        }
         body.dark {background-color: #000;} /* #9b59b6 */
 
 body.dark h1, body.dark .support a {color: #fff;}
@@ -148,6 +153,9 @@ body.dark h1, body.dark .support a {color: #fff;}
 .checkbox:checked + .checkbox-label .ball {
   transform: translateX(29px);
 }
+.checkbox:checked + .checkbox-label .ball {
+  background-color: #000;
+}
     </style>
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"  >
@@ -171,13 +179,15 @@ body.dark h1, body.dark .support a {color: #fff;}
 <div>
     
     
-<div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://nwdevin.github.io/Dustbin/snaketest.html" data-a2a-title="Play,  Snake Game!! Click here">
-<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://nwdevin.github.io/Dustbin/snaketest.html" data-a2a-title="Click here to play snake game &#128013; &#128525;">
+    <div class="share">Share this page</div>
+    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
 <a class="a2a_button_facebook"></a>
 <a class="a2a_button_whatsapp"></a>
 <a class="a2a_button_telegram"></a>
 <a class="a2a_button_sms"></a>
 <a class="a2a_button_email"></a>
+
 </div>
 <div id="cbox">
   <input type="checkbox" class="checkbox" id="checkbox">
@@ -207,21 +217,21 @@ checkbox.addEventListener("change", () => {
         var grid = 16;
         var count = 0;
         var snake = {
-            x: 160,
-            y: 160,
+            x: 144,
+            y: 144,
             dx: grid,
             dy: 0,
             cells: [],
             maxCells: 4
         };
         var apple = {
-            x: 160,
-            y: 160
+            x: 208,
+            y: 208
         };
         var score = 0;
         var gameRunning = true;
         var gamePaused = false;
-        var requestId;
+        
 
 // Get sound elements
         const eatSound = document.getElementById('eatSound');
@@ -236,8 +246,8 @@ checkbox.addEventListener("change", () => {
             score = 0;
             updateScore();
             snake = {
-                x: 160,
-                y: 160,
+                x: 80,
+                y: 80,
                 dx: grid,
                 dy: 0,
                 cells: [],
@@ -386,4 +396,4 @@ checkbox.addEventListener("change", () => {
         loop();
     </script>
 </body>
-    </html>
+</html>
