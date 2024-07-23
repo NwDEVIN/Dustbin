@@ -1,0 +1,228 @@
+ body {
+            background: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            position: fixed;     
+            top: 20px;
+            left: 15px;
+            height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            border: 2px solid gold;
+            box-sizing: border-box;
+        }
+
+        #arrowKeys {
+            position: fixed;
+            top: 400px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #39b41e;
+            background-color: #f2ebf4;
+            border-radius: 30%;              
+        }   
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .arrow {
+            font-size: 60px;
+            margin: 15px;
+            cursor: pointer;
+        }
+
+        #leftArrow, #rightArrow {
+            margin-top: -42px;
+        }
+
+        #score {
+            display: none;
+            position: fixed;
+            top: 360px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            color: #ff7300;    
+        }
+
+        #pauseButton {
+            display: none;
+            background-color: #ffffff01;
+            border: none;
+            border-radius: 2px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 40px;
+            position: fixed;
+            top: 350px;
+            right: 300px;        
+            cursor: pointer;
+        }
+
+        #gameOver {
+            display: none;
+            position: fixed;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: red;
+            background-color: #ffa840;
+            padding: 5px;
+            border-radius: 25px;    
+        }
+
+        #restartButton {
+            border: none;
+            border-radius: 2px;  
+            text-align: center;
+            margin-top: 20px;
+            cursor: pointer;
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background-color: #ffffff01;
+            font-size: 50px;
+        }
+
+        .a2a_kit {
+            position: fixed;
+            top: 650px;
+            left: 25%;
+            gap: 5px;         
+            color: #0081ff;    
+        }
+
+        #share {
+            position: relative;
+            left: 25%;
+        }
+
+        #me{
+            position: fixed;
+            top: 650px;
+            left: 30%; 
+            color: #ff6a7fcc;    
+        }
+
+#mobileMessage {
+            position: fixed;
+            top: 680px;
+            left: 15%;
+            background: linear-gradient(to right, #ff5e00, #ffffff, #0cb300);
+            border: none;
+            color: #0003ffce;
+            padding: 5px 10px;            
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+
+        body.dark {
+            background-color: #131313;
+        }
+
+        #cbox {
+            position: fixed;
+            top: 350px;
+            left: 75%;
+        }
+
+        .checkbox {
+            opacity: 0;
+            position: fixed;
+        }
+
+        .checkbox-label {
+            background-color: #8098ff;
+            width: 45px;
+            height: 20px;
+            border-radius: 50px;
+            position: relative;
+            padding: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fa-moon {
+            color: #f1c40f;
+        }
+
+        .fa-sun {
+            color: #f39c12;
+        }
+
+        .checkbox-label .ball {
+            background-color: #fff;
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            left: 2px;
+            top: 4px;
+            border-radius: 50%;
+            transition: transform 0.2s linear;
+        }
+
+        .checkbox:checked + .checkbox-label .ball {
+            transform: translateX(29px);
+        }
+
+        .checkbox:checked + .checkbox-label .ball {
+            background-color: #000;
+        }
+
+        body.dark #arrowKeys {
+            background-color: #605860e8;
+            color: #fff; 
+        }
+
+        body.dark #score {
+            color: #c36010e8;
+        }
+
+        body.dark #share {
+            color: #fff; 
+        }
+        
+        #startButton {
+            background-color: #82bc6e;
+            border: none;
+            border-radius: 30%;
+            padding: 5px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 50px;
+            color: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        #toggleSound {
+            position: fixed;
+            top: 80%;
+            left: 80%;
+            font-size: 40px;
+            border: none;
+            background-color: #f8f8f8;
+            border-radius: 50%;
+            cursor: pointer;
+       }
+        
+        body.dark #toggleSound {
+            background-color: #8f8f8f;
+          }
