@@ -1,27 +1,35 @@
- body {
-            background: #f8f8f8;
-            display: flex;
-            flex-direction: column;
-            position: fixed;     
-            top: 20px;
-            left: 15px;
-            height: 100vh;
-            margin: 0;
-        }
+body {
+    margin: 0; /* Ensure no default margin */
+    padding: 0; /* Ensure no default padding */
+    display: flex;
+    flex-direction: column;   
+    height: 100vh; /* Ensure full viewport height */
+}
 
-        canvas {
-            border: 2px solid gold;
-            box-sizing: border-box;
-        }
+canvas {
+    display: none;
+    border: 2px solid gold;
+    box-sizing: border-box;
+    max-width: 100%; /* Ensure canvas does not overflow */
+    max-height: 80%; /* Adjust as needed */
+    z-index: 2;
+}
+#score{
+    position: fixed;
+    top: 50%; 
+    left: 40%;
+    color: #ff742b;   
+}
 
-        #arrowKeys {
+#arrowKeys {
             position: fixed;
-            top: 400px;
+            top: 55%;
             left: 50%;
             transform: translateX(-50%);
             color: #39b41e;
             background-color: #f2ebf4;
-            border-radius: 30%;              
+            border-radius: 30%;
+            z-index: 1;           
         }   
 
         .row {
@@ -32,52 +40,43 @@
         .arrow {
             font-size: 60px;
             margin: 15px;
-            cursor: pointer;
+            
         }
 
         #leftArrow, #rightArrow {
             margin-top: -42px;
         }
+#score, #gameOver, #restartButton {
+    display: none; /* Initially hide these elements */
+}
 
-        #score {
-            display: none;
-            position: fixed;
-            top: 360px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 20px;
-            color: #ff7300;    
-        }
-
-        #pauseButton {
-            display: none;
-            background-color: #ffffff01;
-            border: none;
-            border-radius: 2px;
-            color: white;
-            text-decoration: none;
-            display: inline-block;
+#pb {
+     position: fixed;
+            top: 52%;
+            right: 85%;
             font-size: 40px;
-            position: fixed;
-            top: 350px;
-            right: 300px;        
-            cursor: pointer;
-        }
+            border: none;
+            border-radius: 1px;
+}
+#pauseButton {
+    
+    font-size: 35px;
+    padding: 0px;
+    border-radius: 5px;
+    z-index: 3;
+}
+#gameOver {
 
-        #gameOver {
-            display: none;
-            position: fixed;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 30px;
-            color: red;
-            background-color: #ffa840;
-            padding: 5px;
-            border-radius: 25px;    
-        }
-
-        #restartButton {
+position: fixed;
+top: 45%;
+left: 40%;
+color: #ff2b35;
+background-color: #ffa96a;
+border-radius: 10px;
+padding: 5px;
+    
+}
+#restartButton {
             border: none;
             border-radius: 2px;  
             text-align: center;
@@ -91,31 +90,31 @@
             color: white;
             background-color: #ffffff01;
             font-size: 50px;
+            z-index: 5;
         }
-
         .a2a_kit {
-            position: fixed;
-            top: 650px;
+                  position: fixed;
+            top: 85%;
             left: 25%;
             gap: 5px;         
             color: #0081ff;    
         }
 
         #share {
-            position: relative;
+                        position: relative;
             left: 25%;
         }
 
         #me{
             position: fixed;
-            top: 650px;
+            top: 80%;
             left: 30%; 
             color: #ff6a7fcc;    
         }
 
 #mobileMessage {
             position: fixed;
-            top: 680px;
+            top: 85%;
             left: 15%;
             background: linear-gradient(to right, #ff5e00, #ffffff, #0cb300);
             border: none;
@@ -124,8 +123,7 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
+            margin: 4px 2px;   
             border-radius: 12px;
         }
 
@@ -134,9 +132,10 @@
         }
 
         #cbox {
-            position: fixed;
-            top: 350px;
-            left: 75%;
+            position: absolute;
+            top: 51%;
+            left: 80%;
+            display: inline-block;
         }
 
         .checkbox {
@@ -146,27 +145,20 @@
 
         .checkbox-label {
             background-color: #8098ff;
+            color: #ffe740;      
             width: 45px;
             height: 20px;
             border-radius: 50px;
             position: relative;
-            padding: 5px;
-            cursor: pointer;
+            padding: 5px;          
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .fa-moon {
-            color: #f1c40f;
-        }
-
-        .fa-sun {
-            color: #f39c12;
-        }
-
+       
         .checkbox-label .ball {
-            background-color: #fff;
+            background-color: #8098ff;
             width: 22px;
             height: 22px;
             position: absolute;
@@ -180,9 +172,7 @@
             transform: translateX(29px);
         }
 
-        .checkbox:checked + .checkbox-label .ball {
-            background-color: #000;
-        }
+       
 
         body.dark #arrowKeys {
             background-color: #605860e8;
@@ -203,7 +193,6 @@
             border-radius: 30%;
             padding: 5px 10px;
             text-align: center;
-            cursor: pointer;
             font-size: 50px;
             color: white;
             position: fixed;
@@ -220,9 +209,10 @@
             border: none;
             background-color: #f8f8f8;
             border-radius: 50%;
-            cursor: pointer;
        }
         
         body.dark #toggleSound {
             background-color: #8f8f8f;
-          }
+       }
+       
+      
