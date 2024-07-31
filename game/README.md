@@ -2,7 +2,7 @@
 
 A classic Snake game implemented in JavaScript with HTML5 Canvas. The game features start, pause, restart, dark mode, and sound toggling functionalities.
 
-![screenshot of game play](/gamescreenshot.jpg)
+![screenshot of game play](/game/gamescreenshot.jpg)
 
 ## Features
 
