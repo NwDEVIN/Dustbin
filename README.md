@@ -23,6 +23,10 @@ A classic Snake game implemented using HTML, CSS, and JavaScript. The game inclu
 ## How to Use
 You can access these projects directly from the [GitHub Pages site](https://nwdevin.github.io/Dustbin/). Simply click on the project you want to explore and start using it.
 
+## License
+
+All rights reserved. You may not use, distribute, or modify this code without permission.
+
 ## Contact
 Feel free to reach out if you have any suggestions, feedback, or questions!
 
