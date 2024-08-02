@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="age.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    
+    <title>Age Calculator</title>
+</head>
+<body>
+    
+    <div class="header">
+        <h1><a href="Age.html" style="color:white; text-decoration:none;">Age Calculator</a></h1>
+    </div>
+    <header>
+        <input type="checkbox" id="active">
+        <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+        <div class="wrapper">
+            <ul>
+                <li><a href="index.html">Home</a></li>          
+                <li><a href="age.html">Age Calculator</a></li>
+                <li><a href="date.html">Date Calculator</a></li>
+                <li><a href="mailto:developers.service.web@gmail.com?subject=/Developer%20contact/<write%20your%20mail%20subject%20here>&amp;body=/Developer%20contact.%20%20Do%20not%20delete%20these%20texts./">Contact</a></li>
+            </ul>
+        </div>
+
+        <div id="languageDropdown">
+            <label for="language">Choose Language:</label>
+            <select id="language" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="bn">বাংলা</option>
+                <!-- Add more language options as needed -->
+            </select>
+        </div>
+    </header>
+
+    <div class="container">
+        <label for="birthdate" id="birthdateLabel">Enter Your Birthdate:</label> 
+        <input type="date" id="birthdate"> 
+        <button onclick="calculateAge()">Calculate Age</button>
+        <p id="result"></p>
+        <p id="nextBirthday"></p>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 All rights reserved.<a href="mailto:developers.service.web@gmail.com?subject=Developer%20contact/<write%20your%20mail%20subject%20here>&amp;body=Developer%20contact.%20%20Do%20not%20delete%20these%20texts. " style="text-decoration: none;">Developer Contact</a></p>
+    </div>
+
+    <script src="age.js"></script> 
+  
+  
+</body>
+</html>
 
