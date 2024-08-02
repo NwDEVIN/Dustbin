@@ -4,6 +4,9 @@ This repository contains several web-based projects that I've developed, includi
 
 ## Projects
 
+![1000007535](https://github.com/user-attachments/assets/3369e3cb-fa0f-4e4c-bc35-c12931cb6341)
+
+
 ### Age Calculator
 A simple tool that calculates your age based on your date of birth. Enter your date of birth, and it will display your age in years, months, and days.
 
