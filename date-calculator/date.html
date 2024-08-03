@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <link rel="stylesheet" href="date.css"/>
+           <style>
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&display=swap');
+</style>
+    <title>Date Calculator</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.jpg">
+    
+    <meta name="description" content="Discover our interactive date calculator and explore the fascinating history of calendars. Learn how different cultures have measured time and how you can calculate time intervals easily.">
+
+    <!-- Meta Keywords (Less important for SEO, but still useful) -->
+    <meta name="keywords" content="date calculator, calendar history, time calculation, historical calendars, date difference, calendar systems">
+
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="Date Calculator and Calendar History">
+    <meta property="og:description" content="Explore our interactive date calculator and learn about the evolution of calendars. From ancient lunar calendars to modern systems, discover how different cultures have tracked time.">
+    <meta property="og:image" content="logo.jpg"> <!-- Replace with the URL to an image representing your content -->
+    <meta property="og:url" content="https://Nwdevin.github.io/Dustbin/date-calculator/date.html">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Date Calculator">
+    <meta name="twitter:description" content="Explore our interactive date calculator and learn about the evolution of calendars. Discover the history and functionality of various calendar systems.">
+    <meta name="twitter:image" content="logo.jpg"> 
+    <meta name="twitter:url" content="https://Nwdevin.github.io/Dustbin/date-calculator/date.html">
+
+    <!-- Additional Meta Tags -->
+    <meta name="author" content="Date Calculator">
+    <meta name="robots" content="index, follow">
+
+</head>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+    <header>
+     
+<h1><a href="date.html" style="color:white; text-decoration: none;">Date Calculator</a></h1>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon"><span></span></label>
+            <div class="nav-overlay">
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../game/snake.html">Snake Game</a></li>
+                    <li><a href="../age-calculator/age.html">Age Calculator</a></li>
+                    <li><a href="mailto:developers.service.web@gmail.com?subject=Date%20calculator/<write%20your%20mail%20subject%20here>&body=Date%20calculator.%20%20Do%20not%20delete%20these%20texts. " style="text-decoration: none;""">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    
+</header>
+
+<br><br>
+<div><p>How many days are there between two dates?
+</div>
+
+<br><br><div id="yyyy">
+    <span></span>
+<span>yyyy</span>
+<span>mm</span>
+<span>dd</span></div>
+
+   <div class="date-picker">Start<br>date:
+        <select id="start-year"></select>
+        <select id="start-month"></select>
+        <select id="start-day"></select>
+    </div>
+    <br>
+    <div class="date-picker"> End<br>date:
+        <select id="end-year"></select>
+        <select id="end-month"></select>
+        <select id="end-day"></select>
+    </div>
+    <br><br>
+    <button id="result" onclick="calculateElapse()">Calculate</button>
+   <br><br>
+    <div class="date_span"></div>
+<br><br><br><br><br><br><br><br><br>
+</div>
+<div id="description">
+    
+    The date calculator is a tool designed to compute the time elapsed between two dates, providing detailed outputs including years, months, weeks, and days . Users can input start and end dates through easy-to-use dropdown selectors for year, month, and day.<br><br><br><br><br><br><br>
+    
+    <h2>
+        History of Calender    </h2><br><br><br>
+        The history of the calendar is a fascinating journey through time, reflecting humanity's quest to measure and organize time. The concept of the calendar dates back to ancient civilizations, each contributing to the evolution of timekeeping systems.
+        <br><br>
+The earliest calendars were based on lunar cycles, reflecting the phases of the Moon. Around 2000 BCE, the Sumerians of Mesopotamia developed one of the first known lunar calendars. This calendar featured months that aligned with the lunar cycle, approximately 29.5 days long. However, because 12 lunar months only amount to about 354 days, the lunar calendar gradually fell out of sync with the solar year, creating a challenge for agricultural societies that depended on seasonal changes.
+<br><br>
+In response to the limitations of lunar calendars, ancient Egyptians pioneered the use of a solar calendar around 3000 BCE. The Egyptian calendar was one of the earliest solar calendars and was based on the solar year, approximately 365 days. The Egyptian year was divided into 12 months of 30 days each, with an additional five days added at the end of the year, known as "epagomenal days." This calendar allowed for a more accurate alignment with the agricultural seasons, crucial for a society dependent on the annual flooding of the Nile River.
+<br><br>
+The Greeks also played a significant role in the development of calendars. They inherited and adapted various systems from earlier cultures. For example, the Athenians used a lunisolar calendar, which combined lunar months with adjustments to align with the solar year. They periodically added an extra month to correct discrepancies between the lunar and solar years.
+<br><br>
+The Roman calendar, which had multiple iterations, was another major step in the evolution of calendar systems. Initially, the Roman calendar was a lunar calendar, but it was eventually reformed by Julius Caesar in 45 BCE to create the Julian calendar. Caesar's reform was aimed at correcting inaccuracies in the Roman calendar and aligning it more closely with the solar year. The Julian calendar established a year of 365.25 days, with a leap year every four years to account for the extra 0.25 days. Although this system improved accuracy, it still resulted in a gradual drift over centuries.
+<br><br>
+In 1582, Pope Gregory XIII introduced the Gregorian calendar to correct the drift caused by the Julian calendar's inaccuracies. The Gregorian reform adjusted the leap year rules, eliminating leap years in century years unless they were divisible by 400. This change refined the calendar year to 365.2425 days, closely matching the solar year. The Gregorian calendar was adopted gradually across different countries, replacing the Julian calendar and becoming the de facto standard for civil use worldwide.
+<br><br>
+Today, the Gregorian calendar remains the predominant system for civil purposes globally. Its widespread adoption underscores its historical significance and accuracy. The calendar’s evolution reflects humanity's ongoing efforts to understand and measure time, balancing the need for precision with practical considerations.
+<br><br><br><br><br><br>
+</div>
+<div class="back-to-top" title="Go to top"></div>
+<div class="footer">
+        <p>© 2024 Date Calculator | All Rights Reserved</p>
+<script src="date.js"></script>
+</body>
+  </html>
