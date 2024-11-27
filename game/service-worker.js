@@ -1,10 +1,10 @@
-const CACHE_NAME = 'Dustbin-cache-v1'; // Updated cache version
+const CACHE_NAME = 'Dustbin-cache-v1.2'; // Updated cache version
 const urlsToCache = [
   '/Dustbin/game/snake.html',
   '/Dustbin/game/snake.css',
   '/Dustbin/game/snake.js',
   '/Dustbin/game/audio/eat.mp3',
-  '/Dustbin/game/game/gameover.mp3',
+  '/Dustbin/game/audio/gameover.mp3',
   '/Dustbin/gamee.png'
 ];
 
