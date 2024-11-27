@@ -1,0 +1,16 @@
+{
+  "name": "Snake Game",
+  "short_name": "Snake Game",
+  "start_url": "/Dustbin/game/snake.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    
+    {
+      "src": "/Dustbin/gamee.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
