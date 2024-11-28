@@ -1,7 +1,7 @@
 {
   "name": "Snake Game",
   "short_name": "Snake Game",
-  "start_url": "/Dustbin/index.html",
+  "start_url": "/Dustbin/game/snake.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
