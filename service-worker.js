@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Dustbin-cache-v1.2'; // Updated cache version
+const CACHE_NAME = 'Dustbin-cache-v1.3'; // Updated cache version
 const urlsToCache = [
   '/Dustbin/index.html',
   '/Dustbin/game/snake.html',
@@ -40,7 +40,7 @@ self.addEventListener('fetch', (event) => {
       .catch(() => {
         // Return cached index.html if network fails
         return caches.match(event.request).then((cachedResponse) => {
-          return cachedResponse || caches.match('/Dustbin/index.html');
+          return cachedResponse || caches.match('/Dustbin/game/snake.html');
         });
       })
   );
