@@ -70,5 +70,19 @@ checkbox.addEventListener("change", () => {
 <div id="mobileMessage" style="display: block;">This game is for mobile device only</div>
  
 <script src="snake.js"></script>
+    <script>
+
+        if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/Dustbin/service-worker.js')
+      .then((registration) => {
+        console.log('Service Worker registered successfully with scope:', registration.scope);
+      })
+      .catch((error) => {
+        console.error('Service Worker registration failed:', error);
+      });
+  });
+        }
+    </script>
       </body>
    </html>
