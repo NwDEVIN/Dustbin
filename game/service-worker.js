@@ -1,62 +1,71 @@
-const CACHE_NAME = 'Dustbin-cache-v1.2'; // Updated cache version
-const urlsToCache = [
+const CACHE_NAME = 'snake-game-cache-v1'; // Cache version
+const ASSETS = [
+  '/Dustbin/index.html',
   '/Dustbin/game/snake.html',
   '/Dustbin/game/snake.css',
   '/Dustbin/game/snake.js',
   '/Dustbin/game/audio/eat.mp3',
-  '/Dustbin/game/audio/gameover.mp3',
+  '/Dustbin/game/game/gameover.mp3',
   '/Dustbin/gamee.png'
 ];
 
-// Install event - cache the assets
+// Install event: Cache resources
 self.addEventListener('install', (event) => {
-  self.skipWaiting(); // Force the new service worker to take control immediately
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('Opened cache');
-      return cache.addAll(urlsToCache);
-    })
-  );
-});
-
-// Fetch event - always try to fetch the latest content first, fallback to cache if network fails
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        // Check if we received a valid response (status 200 and type 'basic')
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response; // If invalid, don't cache
-        }
-
-        // Clone and cache the response if it's valid
-        const responseClone = response.clone();
+    console.log('[Service Worker] Install event triggered');
+    event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseClone);
-        });
-        return response;
-      })
-      .catch(() => {
-        // Return cached index.html if network fails
-        return caches.match(event.request).then((cachedResponse) => {
-          return cachedResponse || caches.match('/Dustbin/game/snake.html');
-        });
-      })
-  );
+            console.log('[Service Worker] Caching assets');
+            return cache.addAll(ASSETS);
+        }).catch((error) => {
+            console.error('[Service Worker] Failed to cache assets:', error);
+        })
+    );
+    self.skipWaiting(); // Force the new service worker to take control immediately
 });
 
-// Activate event - clean up old caches
+// Activate event: Clean up old caches
 self.addEventListener('activate', (event) => {
-  const cacheWhitelist = [CACHE_NAME]; // Keep the latest cache version
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName); // Delete outdated caches
-          }
+    console.log('[Service Worker] Activate event triggered');
+    event.waitUntil(
+        caches.keys().then((keys) => {
+            return Promise.all(
+                keys.map((key) => {
+                    if (key !== CACHE_NAME) {
+                        console.log('[Service Worker] Removing old cache:', key);
+                        return caches.delete(key);
+                    }
+                })
+            );
+        }).then(() => {
+            console.log('[Service Worker] Claiming clients');
+            return self.clients.claim(); // Ensure the new service worker controls all clients
         })
-      );
-    })
-  );
+    );
+});
+
+// Fetch event: Serve resources from cache or fetch from network
+self.addEventListener('fetch', (event) => {
+    console.log('[Service Worker] Fetching:', event.request.url);
+    event.respondWith(
+        caches.match(event.request).then((cachedResponse) => {
+            if (cachedResponse) {
+                console.log('[Service Worker] Serving from cache:', event.request.url);
+                return cachedResponse; // Return from cache
+            }
+            console.log('[Service Worker] Fetching from network:', event.request.url);
+            return fetch(event.request).then((response) => {
+                if (!response || response.status !== 200 || response.type !== 'basic') {
+                    return response; // Return the network response if it's invalid or not basic
+                }
+                // Optionally cache the response for future use
+                return caches.open(CACHE_NAME).then((cache) => {
+                    console.log('[Service Worker] Caching new resource:', event.request.url);
+                    cache.put(event.request, response.clone());
+                    return response;
+                });
+            }).catch((error) => {
+                console.error('[Service Worker] Fetch failed:', error);
+            });
+        })
+    );
 });
